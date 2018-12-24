@@ -1,6 +1,6 @@
 <template>
   <div class="questions page-container">
-    <Header msg="Test page for checking your js skill"></Header>
+    <Header msg="Javascript 理解度チェックテスト"></Header>
     <Content v-for="question in questions" :key="question.id" :content="question"></Content>
   </div>
 </template>

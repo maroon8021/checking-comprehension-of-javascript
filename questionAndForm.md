@@ -260,6 +260,10 @@ Greeting.prototype.sayHello = function(){
   return 'Hello ' + this.people + this.lastWord;
 }
 
+Greeting.prototype.setPeople = function(people){
+  this.people = people;
+}
+
 Greeting.prototype.lastWord = '';
 
 var GoodMorning = function(){}
@@ -275,19 +279,25 @@ GoodEvening.prototype = Greeting.prototype;
 GoodEvening.prototype = new Greeting();
 
 GoodEvening.prototype.say = function(){
-  return 'Good Evening ' + this.people + '!!!';
+  return 'Good evening ' + this.people + '!!!';
 }
 
 var goodMorning = new GoodMorning();
-var goodEvening = new GoodMorning();
+var goodEvening = new GoodEvening();
 
 console.log(goodMorning.say())
 console.log(goodEvening.say())
 goodEvening.lastWord = ' How are you?';
+goodEvening.setPeople('Tom');
 console.log(goodMorning.sayHello())
 console.log(goodEvening.sayHello())
 
 ```
+A.
+Good morning everyone!!!
+Good evening everyone!!!
+Hello everyone
+Hello Tom How are you?
 
 ## 9.namespace
 ```html

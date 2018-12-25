@@ -21,5 +21,8 @@ https://cli.vuejs.org/guide/cli-service.html#vue-cli-service-serve
 ## How to add it to git from local
 https://qiita.com/riversun/items/dac05d7fd9ac304dffa9
 
+## 二段階認証の設定をしたつもりはないけど、なぜかエラーでた(mac)
+https://qiita.com/yoan/items/08b1ba9c9aceab1ffe5e
+
 ## Command
 rm node_modules/ -rf

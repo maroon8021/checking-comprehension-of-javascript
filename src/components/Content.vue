@@ -13,6 +13,9 @@
             </select>
           </div>
         </div>
+        <div class="message is-info" v-if="detail">
+          <div class="message-body">{{ detail }}</div>
+        </div>
       </div>
     </section>
   </div>
@@ -23,7 +26,10 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class Content extends Vue {
-  @Prop() private content!: Object;
+  @Prop()
+  private content!: Object;
+  @Prop()
+  private detail!: String;
 }
 </script>
 
@@ -146,4 +152,38 @@ h4 {
   right: 1.125em;
   z-index: 4;
 }
+
+.select.is-danger select{
+  border-color: #ff3860;
+}
+
+.select.is-danger:not(:hover)::after{
+  border-color: #ff3860;
+}
+
+.select.is-success select{
+  border-color: #23d160;
+}
+
+.select.is-success:not(:hover)::after{
+  border-color: #23d160;
+}
+
+.message.is-info{
+  background-color: #f6fbfe;
+}
+
+.message-body{
+  border-color: #dbdbdb;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 0 0 0 4px;
+  color: #4a4a4a;
+  padding: 1.25em 1.5em;
+}
+.message.is-info .message-body{
+  border-color: #209cee;
+  color: #12537e;
+}
+
 </style>

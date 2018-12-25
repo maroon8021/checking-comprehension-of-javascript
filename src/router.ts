@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Questions from "./views/Questions.vue";
+import Answer from "./views/Answer.vue";
 
 Vue.use(Router);
 
@@ -27,6 +28,11 @@ export default new Router({
       path: '/questions',
       name: 'questions',
       component: Questions
+    },
+    {
+      path: '/answer',
+      name: 'answer',
+      component: Answer
     }
   ],
 });

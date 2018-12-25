@@ -11,6 +11,9 @@ https://qiita.com/yorori/items/5dde43b4e7e6f3dc5cf4
 ## redirect
 https://router.vuejs.org/ja/guide/essentials/redirect-and-alias.html
 
+## vue-router
+https://router.vuejs.org/ja/guide/essentials/navigation.html
+
 ## port number
 https://abhp.net/it/IT_Port_No_100000.html
 https://cli.vuejs.org/guide/cli-service.html#vue-cli-service-serve

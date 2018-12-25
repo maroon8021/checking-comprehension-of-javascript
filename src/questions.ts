@@ -81,12 +81,47 @@ let question = [{
   ]
 },{
   id: 3,
-  code: `  <button id="a">
-  <button id="b">
-  
+  code: `  <button id="a" />
+  <button id="b" />`,
+  codeAnother:`
   var result  = '';
   var aButton = document.getElementById('a');
   var bButton = document.getElementById('b');
+  
+  aButton.addEventListener('blur', function(e){
+    result += 'a:blur/';
+  })
+  
+  bButton.addEventListener('focus', function(e){
+    result += 'b:focus/';
+    e.stopPropagation();
+  })
+
+  bButton.addEventListener('click', function(e){
+    result += 'b:click/';
+    e.stopPropagation();
+  })
+
+  document.addEventListener('click', function(e){
+    result += 'document:click/';
+  })
+
+  clickOperation()
+
+  setTimeout(function(){
+    console.log(result);
+  }, 3000)
+
+  /**
+   *もともとaButtonにfocusがあたっていた状態で、
+   *ユーザーがbButtonをクリックしたという
+   *オペレーションを再現するためのmethodです。 
+   */
+  function clickOperation(){
+    aButton.focus();
+    bButton.focus();
+    bButton.click();
+  }
   `,
   questionItems: [
     {

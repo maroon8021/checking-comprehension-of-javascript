@@ -4,6 +4,7 @@
       <div class="container">
         <h3>Question : {{ content.id }}</h3>
         <pre class="prettyprint custom">{{ content.code }}</pre>
+        <pre v-if="content.codeAnother" class="prettyprint custom">{{ content.codeAnother }}</pre>
         <div v-for="questionItem in content.questionItems" :key="questionItem.questionId">
           <h4>{{ questionItem.questionText }}</h4>
           <div class="select">
@@ -43,6 +44,10 @@ pre.prettyprint.custom span{
   padding-bottom: 8px;
 }
 
+h3 {
+  margin-top: 0;
+}
+
 h4 {
   margin-bottom: 8px;
 }
@@ -66,7 +71,7 @@ h4 {
 .select select:not([multiple]) {
   padding-right: 2.5em;
 }
-.select select {
+.button,.select select {
   -webkit-appearance: none;
   align-items: center;
   border: 1px solid transparent;
@@ -83,6 +88,27 @@ h4 {
   padding-top: calc(0.375em - 1px);
   position: relative;
   vertical-align: top;
+}
+
+.button{
+  background-color: #fff;
+  border-color: #dbdbdb;
+  border-width: 1px;
+  color: #363636;
+  cursor: pointer;
+  justify-content: center;
+  padding-bottom: calc(.375em - 1px);
+  padding-left: .75em;
+  padding-right: .75em;
+  padding-top: calc(.375em - 1px);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.button.is-link{
+  background-color: #3273dc;
+  border-color: transparent;
+  color: #fff;
 }
 
 .select select {

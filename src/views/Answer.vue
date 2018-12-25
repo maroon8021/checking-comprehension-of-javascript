@@ -1,10 +1,12 @@
 <template>
   <div class="questions page-container">
-    <Header msg="Javascript 理解度チェックテスト"></Header>
-    <Content v-for="question in questions" :key="question.id" :content="question"></Content>
+    <Header msg="Javascript 理解度チェックテスト Answer Page"></Header>
+    <Content v-for="question in questions" :key="question.id" :content="question" :detail="question.detail"></Content>
+    <!-- 
     <div class="button-area">
-      <a class="button is-link" @click="onClick">Go to Answer Page</a>
+      <a class="button is-link">Go to Answer Page</a>
     </div>
+    -->
   </div>
 </template>
 
@@ -19,23 +21,8 @@ import Content from '@/components/Content.vue';
     Content
   },
 })
-export default class Questions extends Vue {
+export default class Answer extends Vue {
   private questions: Array<any> = this.$store.getters.getQuestions();
-
-  private onClick(): void {
-    this.$router.push({
-      name:'answer',
-      query: {
-        test: 'tes,t'
-      }
-    })
-  }
-  
-  // private questions(): Array<any> {
-  //   console.log(this.$store)
-  //   return this.$store.getters.getQuestions();
-  // }
-  
 }
 </script>
 

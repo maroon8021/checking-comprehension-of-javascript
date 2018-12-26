@@ -7,7 +7,7 @@
         <pre v-if="content.codeAnother" class="prettyprint custom">{{ content.codeAnother }}</pre>
         <div v-for="questionItem in content.questionItems" :key="questionItem.questionId">
           <h5>{{ questionItem.questionId }} : {{ questionItem.questionText }}</h5>
-          <QuestionSelect :questionItem="questionItem" ></QuestionSelect>
+          <QuestionSelect :questionItem="questionItem" :isAnswerPage="isAnswerPage"></QuestionSelect>
         </div>
         <div class="message is-primary" v-if="answerStr">
           <div class="message-body" v-html="answerStr"></div>
@@ -37,6 +37,12 @@ export default class Content extends Vue {
   private detail!: String;
   @Prop()
   private answerStr!: String;
+  @Prop()
+  private isAnswerPage!: boolean;
+
+  public getValue() :Number{
+   return 1; 
+  }
 
 }
 </script>

@@ -425,7 +425,7 @@ let question = [{
   `,
   questionItems: [
     {
-      questionId: '8-1',
+      questionId: '9-1',
       questionText: 'console.logで出力される文字はなにか',
       answer : 2,
       userAnswer : null,
@@ -494,7 +494,7 @@ let question = [{
   `,
   questionItems: [
     {
-      questionId: '8-1',
+      questionId: '10-1',
       questionText: 'console.log(goodMorning.say())で出力される文字はなにか',
       answer : 4,
       userAnswer : null,
@@ -522,7 +522,7 @@ let question = [{
       ]
     },
     {
-      questionId: '8-2',
+      questionId: '10-2',
       questionText: 'console.log(goodEvening.say())で出力される文字はなにか',
       answer : 4,
       userAnswer : null,
@@ -550,7 +550,7 @@ let question = [{
       ]
     },
     {
-      questionId: '8-3',
+      questionId: '10-3',
       questionText: 'console.log(goodMorning.sayHello())で出力される文字はなにか',
       answer : 2,
       userAnswer : null,
@@ -578,7 +578,7 @@ let question = [{
       ]
     },
     {
-      questionId: '8-4',
+      questionId: '10-4',
       questionText: 'console.log(goodEvening.sayHello())で出力される文字はなにか',
       answer : 5,
       userAnswer : null,

@@ -19,5 +19,6 @@ h1 {
   font-family: cursive;
   text-align: center;
   padding-top: 5%;
+  font-size: 2em;
 }
 </style>

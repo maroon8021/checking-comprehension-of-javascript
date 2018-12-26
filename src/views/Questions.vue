@@ -23,19 +23,22 @@ export default class Questions extends Vue {
   private questions: Array<any> = this.$store.getters.getQuestions();
 
   private onClick(): void {
-    console.log(this)
+    let contentIndex = 0;
+    let questions:any[] = [];
+    this.$children.forEach((child:any, index:number) => {
+      if(child.updateUserAnswer){
+        questions.push(child.updateUserAnswer(contentIndex))
+        contentIndex++
+      }
+    })
+    
     this.$router.push({
       name:'answer',
       query: {
-        test: 'tes,t'
+        answers: JSON.stringify(questions)
       }
     })
   }
-  
-  // private questions(): Array<any> {
-  //   console.log(this.$store)
-  //   return this.$store.getters.getQuestions();
-  // }
   
 }
 </script>

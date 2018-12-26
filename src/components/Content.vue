@@ -32,7 +32,7 @@ import QuestionSelect from '@/components/QuestionSelect.vue';
 export default class Content extends Vue {
   
   @Prop()
-  private content!: Object;
+  private content!: any;
   @Prop()
   private detail!: String;
   @Prop()
@@ -40,8 +40,18 @@ export default class Content extends Vue {
   @Prop()
   private isAnswerPage!: boolean;
 
-  public getValue() :Number{
-   return 1; 
+  public updateUserAnswer(contentIndex:number) :Array<any>{
+    let questions:any[] = []; 
+    this.$children.forEach((child:any, index:number) => {
+      if(child.getValue){
+        let value:any = child.getValue();
+        value.contentIndex = contentIndex;
+        value.questionIndex = index;
+        this.$store.commit('setUserAnswer', value)
+        questions.push(value);
+      }
+    })
+    return questions
   }
 
 }

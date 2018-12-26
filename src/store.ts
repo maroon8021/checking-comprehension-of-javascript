@@ -9,7 +9,9 @@ export default new Vuex.Store({
     questions: questions
   },
   mutations: {
-
+    setUserAnswer(state, payload){
+      state.questions[payload.contentIndex].questionItems[payload.questionIndex].userAnswer = payload.userAnswer;
+    }
   },
   actions: {
 

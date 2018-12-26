@@ -23,6 +23,7 @@ export default class Questions extends Vue {
   private questions: Array<any> = this.$store.getters.getQuestions();
 
   private onClick(): void {
+    console.log(this)
     this.$router.push({
       name:'answer',
       query: {

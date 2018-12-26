@@ -20,8 +20,11 @@ export default class QuestionSelect extends Vue {
   @Prop()
   private questionItem!: questionItem;
 
+  @Prop()
+  private isAnswerPage!: boolean;
+
   private get answerStatus() :String {
-    if(!this.questionItem.userAnswer){
+    if(!this.questionItem.userAnswer || !this.isAnswerPage){
       return ''
     }
     if(this.questionItem.userAnswer === this.questionItem.answer){

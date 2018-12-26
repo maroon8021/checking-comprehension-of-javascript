@@ -10,28 +10,34 @@ let question = [{
   console.log(hoge);
   console.log(huga);`,
   detail: `
-  まず根本的に ¥n
-  var hoge = "hoge" ¥n
-  hoge = "hogehoge"  ¥n
-  console.log(hoge) // hogehoge  ¥n
-  と2行目で更新された結果がでます ¥n
-  が、この問題では "if(needChange)" がいて、こいつによって更新されるかどうかが変わってきます  ¥n
-  if(needChange)周辺のコードは実は  ¥n
-  if(needChange){  ¥n
-    hoge = "hogehoge"  ¥n
-  }  ¥n
-  huga = "hugahuga"  ¥n
-  と同義です。  ¥n
-  すなわち "if()" 以降に "{}" が無いものは一行だけifの中にあるという認識になります  ¥n
-  上記のneedChangeにはfalseが渡されているので、hogeは更新されず、最初に代入されたもので表示されます。  ¥n
-  ここでいいたい大事なことは、ちゃんと{}でくくりましょう。ってことです ¥n
+  <strong>解説</strong><br>
+  まず根本的に <br><br>
+  var hoge = "hoge" <br>
+  hoge = "hogehoge"  <br>
+  console.log(hoge) // hogehoge  <br><br>
+  と2行目で更新された結果がでます <br>
+  が、この問題では <strong>if(needChange)</strong> がいて、こいつによって更新されるかどうかが変わってきます  <br>
+  <strong>if(needChange)</strong>周辺のコードは実は  <br><br>
+  if(needChange){  <br>
+    &nbsp;&nbsp;hoge = "hogehoge"  <br>
+  }  <br>
+  huga = "hugahuga"  <br><br>
+  と同義です。  <br>
+  すなわち "if()" 以降に "{}" が無いものは一行だけifの中にあるという認識になります  <br>
+  上記のneedChangeにはfalseが渡されているので、hogeは更新されず、最初に代入されたもので表示されます。  <br>
+  ここでいいたい大事なことは、ちゃんと{}でくくりましょう。ってことです <br>
+  `,
+  answerStr:`
+  <strong>答え</strong><br>
+  1-1 : <strong>hoge</strong> <br>
+  1-1 : <strong>hugahuga</strong> <br>
   `,
   questionItems: [
     {
       questionId: '1-1',
       questionText: 'console.log(hoge) で出力される文字は？',
       answer : 1,
-      userAnswer : null,
+      userAnswer : 1,
       answerItems: [
         {
           answerId: 1,
@@ -51,7 +57,7 @@ let question = [{
       questionId: '1-2',
       questionText: 'console.log(huga) で出力される文字は？',
       answer : 2,
-      userAnswer : null,
+      userAnswer : 1,
       answerItems: [
         {
           answerId: 1,

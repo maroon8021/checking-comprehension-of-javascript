@@ -1,7 +1,7 @@
 <template>
   <div class="questions page-container">
     <Header msg="Javascript 理解度チェックテスト Answer Page"></Header>
-    <Content v-for="question in questions" :key="question.id" :content="question" :detail="question.detail"></Content>
+    <Content v-for="question in questions" :key="question.id" :content="question" :detail="question.detail" :answerStr="question.answerStr"></Content>
     <!-- 
     <div class="button-area">
       <a class="button is-link">Go to Answer Page</a>

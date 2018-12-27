@@ -3,7 +3,7 @@ let question = [{
   code: `  var hoge = "hoge";
   var huga = "huga";
   var needChange = false;
-  if(needChange);
+  if(needChange)
   hoge = "hogehoge";
   huga = "hugahuga";
   

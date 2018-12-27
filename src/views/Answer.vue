@@ -37,7 +37,6 @@ export default class Answer extends Vue {
         })
       })
     })
-    console.log(result)
     return result
   }
 

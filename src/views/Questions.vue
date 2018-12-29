@@ -11,35 +11,33 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Header from '@/components/Header.vue'; // @ is an alias to /src
-import Content from '@/components/Content.vue'; 
+import Content from '@/components/Content.vue';
 
 @Component({
   components: {
     Header,
-    Content
+    Content,
   },
 })
 export default class Questions extends Vue {
-  private questions: Array<any> = this.$store.getters.getQuestions();
+  private questions: any[] = this.$store.getters.getQuestions();
 
   private onClick(): void {
     let contentIndex = 0;
-    let questions:any[] = [];
-    this.$children.forEach((child:any, index:number) => {
-      if(child.updateUserAnswer){
-        questions.push(child.updateUserAnswer(contentIndex))
-        contentIndex++
+    const questions: any[] = [];
+    this.$children.forEach((child: any, index: number) => {
+      if (child.updateUserAnswer) {
+        questions.push(child.updateUserAnswer(contentIndex));
+        contentIndex++;
       }
-    })
-    
+    });
     this.$router.push({
-      name:'answer',
+      name: 'answer',
       query: {
-        answers: JSON.stringify(questions)
+        answers: JSON.stringify(questions),
       }
-    })
+    });
   }
-  
 }
 </script>
 

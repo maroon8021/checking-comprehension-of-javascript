@@ -29,18 +29,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
-interface questionItem{
-  userAnswer: Number,
-  answer: Number,
-  questionId: Number
+interface questionItem {
+  userAnswer: Number;
+  answer: Number;
+  questionId: Number;
 }
 
 
 @Component
 export default class ResultTable extends Vue {
-  
+
   @Prop()
   private results!: any;
 

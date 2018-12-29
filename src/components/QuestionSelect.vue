@@ -7,18 +7,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
-interface questionItem{
-  userAnswer: Number,
-  answer: Number,
-  questionId: Number
+interface questionItem {
+  userAnswer: Number;
+  answer: Number;
+  questionId: Number;
 }
 
 
 @Component
 export default class QuestionSelect extends Vue {
-  
+
   @Prop()
   private questionItem!: questionItem;
 
@@ -27,8 +27,8 @@ export default class QuestionSelect extends Vue {
 
   private answerValue: Number = -1;
 
-  private get answer() :Number{
-    if(this.answerValue === -1){
+  private get answer(): Number {
+    if (this.answerValue === -1) {
       this.answerValue = this.questionItem.userAnswer || 1;
     }
     return this.answerValue;
@@ -38,26 +38,26 @@ export default class QuestionSelect extends Vue {
     this.answerValue = value;
   }
 
-  private get readOnly() :boolean {
-    return this.isAnswerPage
-  }
-  
-
-  private get answerStatus() :String {
-    if(!this.questionItem.userAnswer || !this.isAnswerPage){
-      return ''
-    }
-    if(this.questionItem.userAnswer === this.questionItem.answer){
-      return 'is-success'
-    }else{
-      return 'is-danger'
-    }
+  private get readOnly(): boolean {
+    return this.isAnswerPage;
   }
 
-  public getValue() :Object {
+
+  private get answerStatus(): String {
+    if (!this.questionItem.userAnswer || !this.isAnswerPage) {
+      return '';
+    }
+    if (this.questionItem.userAnswer === this.questionItem.answer) {
+      return 'is-success';
+    } else {
+      return 'is-danger';
+    }
+  }
+
+  public getValue(): Object {
     return {
-      userAnswer : this.answer
-    }
+      userAnswer : this.answer,
+    };
   }
 }
 </script>

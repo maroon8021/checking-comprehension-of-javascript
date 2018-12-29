@@ -9,68 +9,72 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Header from '@/components/Header.vue'; // @ is an alias to /src
-import Content from '@/components/Content.vue'; 
-import ResultTable from '@/components/ResultTable.vue'; 
+import Content from '@/components/Content.vue';
+import ResultTable from '@/components/ResultTable.vue';
+// tslint:disable-next-line:no-var-requires
+// import { prettyPrint } from '@types/code-prettify/index';
+
 
 @Component({
   components: {
     Header,
     Content,
-    ResultTable
+    ResultTable,
   },
 })
 export default class Answer extends Vue {
-  private questions: Array<any> = this.$store.getters.getQuestions();
+  private questions: any[] = this.$store.getters.getQuestions();
 
-  private results:any = this.getResult();
+  private results: any = this.getResult();
 
-  private score:any = this.getScore();
+  private score: any = this.getScore();
 
-  private getResult() :any {
-    let result: Array<any> = []
-    let questions = this.$store.getters.getQuestions();
-    questions.forEach((question:any) => {
-      question.questionItems.forEach((eachItem:any) => {
+
+  public beforeCreate(): void {
+    const rawAnswers = JSON.parse(this.$route.query.answers.toString());
+    rawAnswers.forEach((answers: any) => {
+      answers.forEach((answer: any) => {
+        this.$store.commit('setUserAnswer', answer);
+      }, this);
+    }, this);
+  }
+
+  public mounted(): void {
+    // prettyPrint();
+    // document.write('<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst" ><\/script>')
+  }
+
+  private getResult(): any {
+    const result: any[] = [];
+    const questions = this.$store.getters.getQuestions();
+    questions.forEach((question: any) => {
+      question.questionItems.forEach((eachItem: any) => {
         result.push({
           questionId : eachItem.questionId,
-          answer : eachItem.answer === eachItem.userAnswer
-        })
-      })
-    })
-    return result
+          answer : eachItem.answer === eachItem.userAnswer,
+        });
+      });
+    });
+    return result;
   }
 
-  private getScore() :any {
-    let score: Object = {}
+  private getScore(): any {
+    const score: object = {};
     let correctNumber: number = 0;
     let totalNumber: number = 0;
-    let questions = this.$store.getters.getQuestions();
-    questions.forEach((question:any) => {
-      question.questionItems.forEach((eachItem:any) => {
-        if(eachItem.answer === eachItem.userAnswer){
-          correctNumber++
+    const questions = this.$store.getters.getQuestions();
+    questions.forEach((question: any) => {
+      question.questionItems.forEach((eachItem: any) => {
+        if (eachItem.answer === eachItem.userAnswer) {
+          correctNumber++;
         }
-        totalNumber++
-      })
-    })
+        totalNumber++;
+      });
+    });
     return {
       correct : correctNumber,
-      total : totalNumber
-    }
-  }
-
-
-  beforeCreate(): void{
-    let rawAnswers = JSON.parse(this.$route.query.answers.toString())
-    rawAnswers.forEach((answers:any) => {
-      answers.forEach((answer:any) => {
-        this.$store.commit('setUserAnswer', answer)
-      },this)
-    },this);
-  }
-
-  mounted(): void{
-    //document.write('<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst" ><\/script>')
+      total : totalNumber,
+    };
   }
 }
 </script>

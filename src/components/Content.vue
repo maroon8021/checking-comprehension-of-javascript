@@ -21,16 +21,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
-import QuestionSelect from '@/components/QuestionSelect.vue'; 
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import QuestionSelect from '@/components/QuestionSelect.vue';
 
 @Component({
   components: {
-    QuestionSelect
+    QuestionSelect,
   },
 })
 export default class Content extends Vue {
-  
+
   @Prop()
   private content!: any;
   @Prop()
@@ -40,18 +40,18 @@ export default class Content extends Vue {
   @Prop()
   private isAnswerPage!: boolean;
 
-  public updateUserAnswer(contentIndex:number) :Array<any>{
-    let questions:any[] = []; 
-    this.$children.forEach((child:any, index:number) => {
-      if(child.getValue){
-        let value:any = child.getValue();
+  public updateUserAnswer(contentIndex: number): any[] {
+    const questions: any[] = [];
+    this.$children.forEach((child: any, index: number) => {
+      if (child.getValue) {
+        const value: any = child.getValue();
         value.contentIndex = contentIndex;
         value.questionIndex = index;
-        this.$store.commit('setUserAnswer', value)
+        this.$store.commit('setUserAnswer', value);
         questions.push(value);
       }
-    })
-    return questions
+    });
+    return questions;
   }
 
 }

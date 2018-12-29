@@ -1,4 +1,4 @@
-let question = [{
+const question = [{
   id: 1,
   code: `  var hoge = "hoge";
   var huga = "huga";
@@ -6,7 +6,7 @@ let question = [{
   if(needChange)
   hoge = "hogehoge";
   huga = "hugahuga";
-  
+
   console.log(hoge);
   console.log(huga);`,
   detail: `
@@ -27,7 +27,7 @@ let question = [{
   上記のneedChangeにはfalseが渡されているので、hogeは更新されず、最初に代入されたもので表示されます。  <br>
   ここでいいたい大事なことは、ちゃんと{}でくくりましょう。ってことです <br>
   `,
-  answerStr:`
+  answerStr: `
   <strong>答え</strong><br>
   1-1 : <strong>hoge</strong> <br>
   1-1 : <strong>hugahuga</strong> <br>
@@ -41,17 +41,17 @@ let question = [{
       answerItems: [
         {
           answerId: 1,
-          answerText: 'hoge'
+          answerText: 'hoge',
         },
         {
           answerId: 2,
-          answerText: 'hogehoge'
+          answerText: 'hogehoge',
         },
         {
           answerId: 3,
-          answerText: 'NONE(nothing shown)'
+          answerText: 'NONE(nothing shown)',
         },
-      ]
+      ],
     },
     {
       questionId: '1-2',
@@ -61,20 +61,20 @@ let question = [{
       answerItems: [
         {
           answerId: 1,
-          answerText: 'huga'
+          answerText: 'huga',
         },
         {
           answerId: 2,
-          answerText: 'hugahuga'
+          answerText: 'hugahuga',
         },
         {
           answerId: 3,
-          answerText: 'NONE(nothing shown)'
+          answerText: 'NONE(nothing shown)',
         },
-      ]
-    }
-  ]
-},{
+      ],
+    },
+  ],
+}, {
   id: 2,
   code: `  console.log("1");
   setTimeout(function(){
@@ -95,7 +95,7 @@ let question = [{
   console.log("1")が終わったあとに、 <strong>setTimeout</strong> というmethod自体は実行されています。ただし、中のconsole.log("2") は1000ミリ秒後に実行されます。
   console.log("3")はforを1000回回されてますが、あくまで同期的処理は上から順に実行されるため、3が表示されたあとに後続の4が表示されます。
   `,
-  answerStr:`
+  answerStr: `
   <strong>答え</strong><br>
   2-1 : <strong>1 -> 3 -> 4 -> 2</strong> <br>
   `,
@@ -108,32 +108,32 @@ let question = [{
       answerItems: [
         {
           answerId: 1,
-          answerText: '1 -> 2 -> 3 -> 4'
+          answerText: '1 -> 2 -> 3 -> 4',
         },
         {
           answerId: 2,
-          answerText: '1 -> 2 -> 4 -> 3'
+          answerText: '1 -> 2 -> 4 -> 3',
         },
         {
           answerId: 3,
-          answerText: '1 -> 3 -> 4 -> 2'
+          answerText: '1 -> 3 -> 4 -> 2',
         },
-      ]
-    }
-  ]
-},{
+      ],
+    },
+  ],
+}, {
   id: 3,
   code: `  <button id="a" />
   <button id="b" />`,
-  codeAnother:`
+  codeAnother: `
   var result  = '';
   var aButton = document.getElementById('a');
   var bButton = document.getElementById('b');
-  
+
   aButton.addEventListener('blur', function(e){
     result += 'a:blur/';
   })
-  
+
   bButton.addEventListener('focus', function(e){
     result += 'b:focus/';
     e.stopPropagation();
@@ -161,7 +161,7 @@ let question = [{
   /**
    *もともとaButtonにfocusがあたっていた状態で、
    *ユーザーがbButtonをクリックしたという
-   *オペレーションを再現するためのmethodです。 
+   *オペレーションを再現するためのmethodです。
    */
   function clickOperation(){
     aButton.focus();
@@ -186,9 +186,9 @@ let question = [{
   bButtonのclick時に<strong>stopPropagation()</strong>が呼ばれているので、ここでイベントの伝播が止まり、<strong>documentのclick(バブリング)</strong>のlistenerは呼ばれません。<br>
   そのため、<strong>document:click by capture/b:click/</strong>となります
 
-  
+
   `,
-  answerStr:`
+  answerStr: `
   <strong>答え</strong><br>
   3-1 : <strong>a:blur/b:focus/document:click by capture/b:click/</strong> <br>
   `,
@@ -201,46 +201,46 @@ let question = [{
       answerItems: [
         {
           answerId: 1,
-          answerText: 'a:blur/b:focus/'
+          answerText: 'a:blur/b:focus/',
         },
         {
           answerId: 2,
-          answerText: 'a:blur/b:focus/document:click by capture/'
+          answerText: 'a:blur/b:focus/document:click by capture/',
         },
         {
           answerId: 3,
-          answerText: 'a:blur/b:focus/b:click/'
+          answerText: 'a:blur/b:focus/b:click/',
         },
         {
           answerId: 4,
-          answerText: 'a:blur/b:focus/document:click by capture/b:click/'
+          answerText: 'a:blur/b:focus/document:click by capture/b:click/',
         },
         {
           answerId: 5,
-          answerText: 'a:blur/b:focus/document:click by capture/b:click/document:click/'
+          answerText: 'a:blur/b:focus/document:click by capture/b:click/document:click/',
         },
         {
           answerId: 6,
-          answerText: 'b:focus/'
+          answerText: 'b:focus/',
         },
         {
           answerId: 7,
-          answerText: 'b:focus/b:click/'
+          answerText: 'b:focus/b:click/',
         },
         {
           answerId: 8,
-          answerText: 'b:focus/document:click by capture/b:click/document:click/'
-        }
-      ]
-    }
-  ]
-},{
+          answerText: 'b:focus/document:click by capture/b:click/document:click/',
+        },
+      ],
+    },
+  ],
+}, {
   id: 4,
   code: `
   var number = 10;
   number = number - '4';
   number = number + '7';
-  
+
   console.log(number);`,
   detail: `
   <strong>解説</strong><br>
@@ -251,7 +251,7 @@ let question = [{
   数値を扱うときは必ずparseIntでnumberになおしてから処理しましょう<br><br>
   <a target="_blank" href="https://jsprimer.net/basic/implicit-coercion/" >https://jsprimer.net/basic/implicit-coercion/</a>
   `,
-  answerStr:`
+  answerStr: `
   <strong>答え</strong><br>
   4-1 : <strong>67</strong> <br>
   `,
@@ -264,20 +264,20 @@ let question = [{
       answerItems: [
         {
           answerId: 1,
-          answerText: '13'
+          answerText: '13',
         },
         {
           answerId: 2,
-          answerText: '67'
+          answerText: '67',
         },
         {
           answerId: 3,
-          answerText: '1047'
+          answerText: '1047',
         },
-      ]
-    }
-  ]
-},{
+      ],
+    },
+  ],
+}, {
   id: 5,
   code: `
   var result = 'truth : ';
@@ -285,10 +285,10 @@ let question = [{
   var num10 = 10;
   var num1 = 1;
   var emptyArray = [];
-  
+
   if(str10 == num10){
     result += 'str10 == num10/';
-  } 
+  }
   if(str10 === num10){
     result += 'str10 === num10/';
   }
@@ -314,9 +314,9 @@ let question = [{
   </a><br>
   <a target="_blank" href="https://qiita.com/katsuo5/items/ffb8b83c6b8a6dcbd9d6" >JavaScriptでfalseになるもの
   </a>
-  
+
   `,
-  answerStr:`
+  answerStr: `
   <strong>答え</strong><br>
   5-1 : <strong>truth : str10 == num10/num1 == true/emptyArray</strong>
   `,
@@ -329,40 +329,40 @@ let question = [{
       answerItems: [
         {
           answerId: 1,
-          answerText: 'truth : str10 == num10/'
+          answerText: 'truth : str10 == num10/',
         },
         {
           answerId: 2,
-          answerText: 'truth : str10 === num10/'
+          answerText: 'truth : str10 === num10/',
         },
         {
           answerId: 3,
-          answerText: 'truth : str10 == num10/num1 == true/'
+          answerText: 'truth : str10 == num10/num1 == true/',
         },
         {
           answerId: 4,
-          answerText: 'truth : str10 === num10/num1 == true/'
+          answerText: 'truth : str10 === num10/num1 == true/',
         },
         {
           answerId: 5,
-          answerText: 'truth : str10 == num10/emptyArray'
+          answerText: 'truth : str10 == num10/emptyArray',
         },
         {
           answerId: 6,
-          answerText: 'truth : str10 === num10/emptyArray'
+          answerText: 'truth : str10 === num10/emptyArray',
         },
         {
           answerId: 7,
-          answerText: 'truth : str10 == num10/num1 == true/emptyArray'
+          answerText: 'truth : str10 == num10/num1 == true/emptyArray',
         },
         {
           answerId: 8,
-          answerText: 'truth : str10 === num10/num1 == true/emptyArray'
-        }
-      ]
-    }
-  ]
-},{
+          answerText: 'truth : str10 === num10/num1 == true/emptyArray',
+        },
+      ],
+    },
+  ],
+}, {
   id: 6,
   code: `
   <script type="text/javascript" src="index1.js"></script>
@@ -396,9 +396,9 @@ let question = [{
   var mySpace = mySpace || {}<br>
   mySpaceがすでに他の場所で定義されていた場合はそれをそのまま使い、なければobjectを渡す、といったことをすることによって予期せぬ上書きを防ぎます。<br>
   上記の問題では<strong>mySpace.showText</strong>がindex2.jsで再定義されているため、答えのような表示になります<br>
-  
+
   `,
-  answerStr:`
+  answerStr: `
   <strong>答え</strong><br>
   6-1 : <strong>sample text : called from index2.js</strong>
   `,
@@ -411,28 +411,28 @@ let question = [{
       answerItems: [
         {
           answerId: 1,
-          answerText: 'NONE(Error/Nothing shown)'
+          answerText: 'NONE(Error/Nothing shown)',
         },
         {
           answerId: 2,
-          answerText: 'sample text'
+          answerText: 'sample text',
         },
         {
           answerId: 3,
-          answerText: 'sample text : called from index2.js'
+          answerText: 'sample text : called from index2.js',
         },
         {
           answerId: 4,
-          answerText: ' : called from index2.js'
+          answerText: ' : called from index2.js',
         },
         {
           answerId: 5,
-          answerText: 'undefined : called from index2.js'
-        }
-      ]
-    }
-  ]
-},{
+          answerText: 'undefined : called from index2.js',
+        },
+      ],
+    },
+  ],
+}, {
   id: 7,
   code: `
   var Sample = function(){}
@@ -460,9 +460,9 @@ let question = [{
   var hogehoge = new hoge()<br>
   console.log(hogehoge.huga) // "huga"<br>
   console.log(hogehoge.hugahuga) // "hugahuga"<br>
-  
+
   `,
-  answerStr:`
+  answerStr: `
   <strong>答え</strong><br>
   7-1 : <strong>hogehoge</strong>
   `,
@@ -475,26 +475,26 @@ let question = [{
       answerItems: [
         {
           answerId: 1,
-          answerText: 'hoge'
+          answerText: 'hoge',
         },
         {
           answerId: 2,
-          answerText: 'hogehoge'
+          answerText: 'hogehoge',
         },
         {
           answerId: 3,
-          answerText: 'NONE(Error/Nothing happens)'
+          answerText: 'NONE(Error/Nothing happens)',
         },
-      ]
-    }
-  ]
-},{
+      ],
+    },
+  ],
+}, {
   id: 8,
   code: `
   String.prototype.toNumber = function(){
     return parseInt(this, 10);
   }
-  
+
   var str10 = '10';
   console.log(str10.toNumber())
   `,
@@ -504,9 +504,9 @@ let question = [{
   ただし、これはあまり推奨された行為ではありません。
   他のライブラリでこういった追加や削除が行われていたりした場合にコンフリクトしたり、文書化などして他の開発者が正確に把握できる状態をつくっておかないと、かえって不便になることがあります。<br>
   IEでまだサポートされていない機能のポリフィルとして追加するときなどには使えますが、原則こういったモンキーパッチと呼ばれる実装は控えましょう。
-  
+
   `,
-  answerStr:`
+  answerStr: `
   <strong>答え</strong><br>
   8-1 : <strong>10(number)</strong>
   `,
@@ -519,37 +519,37 @@ let question = [{
       answerItems: [
         {
           answerId: 1,
-          answerText: '10(String)'
+          answerText: '10(String)',
         },
         {
           answerId: 2,
-          answerText: '10(number)'
+          answerText: '10(number)',
         },
         {
           answerId: 3,
-          answerText: 'NONE(Error/Nothing shown)'
+          answerText: 'NONE(Error/Nothing shown)',
         },
-      ]
-    }
-  ]
-},{
+      ],
+    },
+  ],
+}, {
   id: 9,
   code: `
   <button id='sample'>sample</button>
   `,
-  codeAnother:`
+  codeAnother: `
   var sampleElement = document.getElementById('sample')
-  
+
   var Sample = function(element){
     this.element = element
   }
-  
+
   Sample.prototype.init = function(){
     this.element.addEventListener('click', function(){
       console.log(this)
     })
   }
-  
+
   var sample = new Sample(sampleElement);
   sample.init();
   sampleElement.click();
@@ -572,7 +572,7 @@ let question = [{
   }<br>
   としてbindする対象を変えてあげることができます。
   `,
-  answerStr:`
+  answerStr: `
   <strong>答え</strong><br>
   9-1 : <strong>&lt;button id="sample">sample &lt;/button> (Element)</strong>
   `,
@@ -585,21 +585,21 @@ let question = [{
       answerItems: [
         {
           answerId: 1,
-          answerText: 'Sample (instance of Sample function)'
+          answerText: 'Sample (instance of Sample function)',
         },
         {
           answerId: 2,
-          answerText: '<button id="sample">sample</button> (Element)'
+          answerText: '<button id="sample">sample</button> (Element)',
         },
         {
           answerId: 3,
-          answerText: 'NONE(Error/Nothing happens)'
+          answerText: 'NONE(Error/Nothing happens)',
         },
-      ]
-    }
-  ]
+      ],
+    },
+  ],
 }
-,{
+, {
   id: 10,
   code: `
   var Greeting = function(people){
@@ -608,39 +608,39 @@ let question = [{
   Greeting.prototype.say = function(){
     return 'Hi ' + this.people + '!!!';
   }
-  
+
   Greeting.prototype.sayHello = function(){
     return 'Hello ' + this.people + this.lastWord;
   }
-  
+
   Greeting.prototype.setPeople = function(people){
     this.people = people;
   }
-  
+
   Greeting.prototype.lastWord = '';
 
-  
+
   var GoodMorning = function(){}
-  
+
   GoodMorning.prototype = new Greeting();
-  
+
   GoodMorning.prototype.say = function(){
     return 'Good morning ' + this.people + '!!!';
   }
 
-  
+
   var GoodEvening = function(){}
 
   GoodEvening.prototype = new Greeting();
-  
+
   GoodEvening.prototype.say = function(){
     return 'Good evening ' + this.people + '!!!';
   }
 
-  
+
   var goodMorning = new GoodMorning();
   var goodEvening = new GoodEvening();
-  
+
   console.log(goodMorning.say()) // 10-1
   console.log(goodEvening.say()) // 10-2
   goodEvening.lastWord = ' How are you?';
@@ -666,7 +666,7 @@ let question = [{
 
 
   `,
-  answerStr:`
+  answerStr: `
   <strong>答え</strong><br>
   10-1 : <strong>Good morning everyone!!!</strong> <br>
   10-2 : <strong>Good evening everyone!!!</strong> <br>
@@ -683,25 +683,25 @@ let question = [{
       answerItems: [
         {
           answerId: 1,
-          answerText: 'Hi !!!'
+          answerText: 'Hi !!!',
         },
         {
           answerId: 2,
-          answerText: 'Hi everyone!!!'
+          answerText: 'Hi everyone!!!',
         },
         {
           answerId: 3,
-          answerText: 'Good morning !!!'
+          answerText: 'Good morning !!!',
         },
         {
           answerId: 4,
-          answerText: 'Good morning everyone!!!'
+          answerText: 'Good morning everyone!!!',
         },
         {
           answerId: 5,
-          answerText: 'NONE(Error/Nothing happens)'
+          answerText: 'NONE(Error/Nothing happens)',
         },
-      ]
+      ],
     },
     {
       questionId: '10-2',
@@ -711,25 +711,25 @@ let question = [{
       answerItems: [
         {
           answerId: 1,
-          answerText: 'Hi !!!'
+          answerText: 'Hi !!!',
         },
         {
           answerId: 2,
-          answerText: 'Hi everyone!!!'
+          answerText: 'Hi everyone!!!',
         },
         {
           answerId: 3,
-          answerText: 'Good evening !!!'
+          answerText: 'Good evening !!!',
         },
         {
           answerId: 4,
-          answerText: 'Good evening everyone!!!'
+          answerText: 'Good evening everyone!!!',
         },
         {
           answerId: 5,
-          answerText: 'NONE(Error/Nothing happens)'
+          answerText: 'NONE(Error/Nothing happens)',
         },
-      ]
+      ],
     },
     {
       questionId: '10-3',
@@ -739,25 +739,25 @@ let question = [{
       answerItems: [
         {
           answerId: 1,
-          answerText: 'Hello'
+          answerText: 'Hello',
         },
         {
           answerId: 2,
-          answerText: 'Hello everyone'
+          answerText: 'Hello everyone',
         },
         {
           answerId: 3,
-          answerText: 'Hello everyone How are you'
+          answerText: 'Hello everyone How are you',
         },
         {
           answerId: 4,
-          answerText: 'Hello Tom How'
+          answerText: 'Hello Tom How',
         },
         {
           answerId: 5,
-          answerText: 'Hello Tom How are you'
-        }
-      ]
+          answerText: 'Hello Tom How are you',
+        },
+      ],
     },
     {
       questionId: '10-4',
@@ -767,27 +767,27 @@ let question = [{
       answerItems: [
         {
           answerId: 1,
-          answerText: 'Hello'
+          answerText: 'Hello',
         },
         {
           answerId: 2,
-          answerText: 'Hello everyone'
+          answerText: 'Hello everyone',
         },
         {
           answerId: 3,
-          answerText: 'Hello everyone How are you'
+          answerText: 'Hello everyone How are you',
         },
         {
           answerId: 4,
-          answerText: 'Hello Tom How'
+          answerText: 'Hello Tom How',
         },
         {
           answerId: 5,
-          answerText: 'Hello Tom How are you'
-        }
-      ]
-    }
-  ]
-}]
+          answerText: 'Hello Tom How are you',
+        },
+      ],
+    },
+  ],
+}];
 
 export default question;

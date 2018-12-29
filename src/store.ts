@@ -6,19 +6,19 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    questions: questions
+    questions,
   },
   mutations: {
-    setUserAnswer(state, payload){
+    setUserAnswer(state, payload) {
       state.questions[payload.contentIndex].questionItems[payload.questionIndex].userAnswer = payload.userAnswer;
-    }
+    },
   },
   actions: {
 
   },
   getters: {
-    getQuestions: (state, getters) => () =>{
+    getQuestions: (state, getters) => () => {
       return state.questions;
-    }
-  }
+    },
+  },
 });

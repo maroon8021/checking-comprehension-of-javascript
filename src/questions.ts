@@ -568,7 +568,7 @@ const question = [{
   Sample.prototype.init = function(){<br>
     &nbsp;&nbsp; this.element.addEventListener('click', function(){<br>
       &nbsp;&nbsp;&nbsp;&nbsp; console.log(this)<br>
-      &nbsp;&nbsp; }.<strong>this</strong>)<br>
+      &nbsp;&nbsp; }<strong>.bind(this)</strong>)<br>
   }<br>
   としてbindする対象を変えてあげることができます。
   `,

@@ -26,3 +26,9 @@ https://qiita.com/yoan/items/08b1ba9c9aceab1ffe5e
 
 ## Command
 rm node_modules/ -rf
+
+
+
+## 181229
+試してみたがちょっとうまくいかなかった
+https://qiita.com/mtgto/items/e30d1529ca298e49557e

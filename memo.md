@@ -27,7 +27,8 @@ https://qiita.com/yoan/items/08b1ba9c9aceab1ffe5e
 ## Command
 rm node_modules/ -rf
 
-
+## declare let PR: any;
+https://qiita.com/Chrowa3/items/a566489392fc1c969b88#jquery%E3%82%92%E4%BD%BF%E3%81%86
 
 ## 181229
 試してみたがちょっとうまくいかなかった

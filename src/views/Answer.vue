@@ -11,9 +11,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import Header from '@/components/Header.vue'; // @ is an alias to /src
 import Content from '@/components/Content.vue';
 import ResultTable from '@/components/ResultTable.vue';
-// tslint:disable-next-line:no-var-requires
-// import { prettyPrint } from '@types/code-prettify/index';
-
+declare let PR: any;
 
 @Component({
   components: {
@@ -40,8 +38,7 @@ export default class Answer extends Vue {
   }
 
   public mounted(): void {
-    // prettyPrint();
-    // document.write('<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst" ><\/script>')
+    PR.prettyPrint();
   }
 
   private getResult(): any {
